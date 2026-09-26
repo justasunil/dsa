@@ -6,11 +6,16 @@
 
 all: graph_dsa
 
+COMMON_INC=-I../inc
+INCLUDE=$(COMMON_INC) 
 
-SOURCE=../src/bfs.cpp
 
-graph_dsa: graph_input.cpp $(SOURCE)
-	g++ -I../inc/ $^ -o graph_dsa
+GRAPH_INC=-I../src/graphs/
+GRAPH_SRC=../src/graphs/bfs.cpp
+INCLUDE+=$(GRAPH_INC)
+
+graph_dsa: graph_input.cpp $(GRAPH_SRC)
+	g++ $(INCLUDE) $^ -o graph_dsa
 
 clean:
 	rm -f graph_dsa
